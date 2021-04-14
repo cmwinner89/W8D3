@@ -19,3 +19,16 @@ Array.prototype.myMap = function(callback) {
   return myMapArr;
 }
 
+Array.prototype.myReduce = function(callback, initialValue=this[0]){
+  
+  let newArr = this
+  let acc = initialValue;
+  if (initialValue === this[0]){
+    newArr.shift();
+  }
+  newArr.myEach(function(ele){
+    
+    acc = callback(acc, ele);
+  })
+  return acc;
+}
